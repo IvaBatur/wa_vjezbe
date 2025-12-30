@@ -12,11 +12,13 @@ npm install
 # Kreirati .env file
 cp .env.example .env
 
-Dodati .env file i vlastite MongoDB podatke:
+# Dodati .env file i vlastite MongoDB podatke:
+```
 MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/
 MONGO_DB_NAME=pizza_db
 PORT=3000
-
+```
+```bash
 # Pokrenuti backend server
 npm start
 ```
