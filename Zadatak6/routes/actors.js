@@ -33,7 +33,7 @@ router.get('/',
 
 router.get('/:id',
   [
-    param('id').isInt().withMessage('ID mora biti broj').toInt().escape()
+    param('id').isInt().withMessage('ID must be a number').toInt().escape()
   ],
   provjeriGreske,
   findActorById,
@@ -43,8 +43,8 @@ router.get('/:id',
 );
 router.post('/',
   [
-    body('name').notEmpty().withMessage('Name je obavezan').trim().escape(),
-    body('birthYear').notEmpty().isInt().withMessage('BirthYear mora biti broj').toInt(),
+    body('name').notEmpty().withMessage('Name is required').trim().escape(),
+    body('birthYear').notEmpty().isInt().withMessage('BirthYear must be a number').toInt(),
     body('movies').optional().isArray()
   ],
   provjeriGreske,
@@ -69,7 +69,7 @@ router.patch('/:id',
     body('movies').optional().isArray(),
     body().custom((value) => {
       if (!value.name && !value.birthYear && !value.movies) {
-        throw new Error('Mora biti poslan barem jedan parametar');
+        throw new Error('At least one parameter must be provided');
       }
       return true;
     })
