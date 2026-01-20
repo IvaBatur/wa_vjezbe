@@ -9,7 +9,7 @@ const findMovieById = (req, res, next) => {
     req.movie = film;
     next();
   } else {
-    res.status(404).json({ message: 'Film s traženim ID-om nije pronađen' });
+    res.status(404).json({ message: 'Movie with the requested ID not found' });
   }
 };
 
@@ -21,7 +21,7 @@ const findActorById = (req, res, next) => {
     req.actor = glumac;
     next();
   } else {
-    res.status(404).json({ message: 'Glumac s traženim ID-om nije pronađen' });
+    res.status(404).json({ message: 'Actor with the requested ID not found' });
   }
 };
 
@@ -34,5 +34,6 @@ const logger = (req, res, next) => {
   
   next();
 };
+
 
 export { findMovieById, findActorById, logger };
