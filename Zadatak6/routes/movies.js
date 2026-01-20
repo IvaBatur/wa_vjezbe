@@ -41,7 +41,7 @@ router.get('/',
 
 router.get('/:id',
   [
-    param('id').isInt().withMessage('ID mora biti broj').toInt().escape()
+    param('id').isInt().withMessage('ID must be a number').toInt().escape()
   ],
   provjeriGreske,
   findMovieById,
@@ -52,10 +52,10 @@ router.get('/:id',
 
 router.post('/',
   [
-    body('title').notEmpty().withMessage('Title je obavezan').trim().escape(),
-    body('year').notEmpty().isInt().withMessage('Year mora biti broj').toInt(),
-    body('genre').notEmpty().withMessage('Genre je obavezan').trim().escape(),
-    body('director').notEmpty().withMessage('Director je obavezan').trim().escape()
+    body('title').notEmpty().withMessage('Title is required').trim().escape(),
+    body('year').notEmpty().isInt().withMessage('Year must be a number').toInt(),
+    body('genre').notEmpty().withMessage('Genre is required').trim().escape(),
+    body('director').notEmpty().withMessage('Director is required').trim().escape()
   ],
   provjeriGreske,
   (req, res) => {
@@ -80,7 +80,7 @@ router.patch('/:id',
     body('director').optional().trim().escape(),
     body().custom((value) => {
       if (!value.title && !value.year && !value.genre && !value.director) {
-        throw new Error('Mora biti poslan barem jedan parametar');
+        throw new Error('At least one parameter must be provided');
       }
       return true;
     })
@@ -96,5 +96,6 @@ router.patch('/:id',
     res.json(req.movie);
   }
 );
+
 
 export default router;
