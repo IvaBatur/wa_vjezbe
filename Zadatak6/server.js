@@ -12,20 +12,11 @@ app.use(logger);
 app.use('/movies', moviesRouter);
 app.use('/actors', actorsRouter);
 
-app.get('/', (req, res) => {
-  res.json({
-    poruka: 'Movie Server API',
-    rute: {
-      filmovi: '/movies',
-      glumci: '/actors'
-    }
-  });
-});
-
 app.listen(PORT, (error) => {
   if (error) {
     console.log('Greška:', error.message);
   } else {
     console.log('Server radi na http://localhost:' + PORT);
   }
+
 });
